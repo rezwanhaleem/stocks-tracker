@@ -1,0 +1,288 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.App .container {
+  width: 75%;
+}
+
+.App > .container {
+  overflow: hidden;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App .loadData {
+  border-radius: 50%;
+  margin: 1em auto;
+  padding: 1em;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.App .loadData i {
+  font-size: 1.2em;
+}
+
+.App .loadData:hover {
+  background-color: white;
+}
+
+.App .loadData:active {
+  background-color: whitesmoke;
+}
+
+.pages {
+  display: flex;
+  transition: transform 0.6s ease 0s;
+}
+
+.page {
+  width: 100%;
+  flex: 1 0 100%;
+}
+
+.page-1{
+  justify-content: inherit;}
+
+.start {
+  margin-top: 3em;
+  max-width: 80%;
+  background-image: url(/hero.png);
+  background-size: cover;
+  padding: 10% 0 0 0;
+  cursor: default;
+}
+
+.start:hover {
+  cursor: default;
+}
+
+.bg-overlay {
+  background: linear-gradient(-45deg, #0CAF82, #0CAF82);
+  padding: 0 20px 40px 20px;
+  position: relative;
+}
+
+.bg-overlay .price {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.start:hover {
+  transform: none;
+}
+
+.start.card.text-center::before {
+  height: 40%;
+  bottom: -10%;
+}
+
+svg {
+  background-size: cover;
+  width: 100%;
+  display: block;
+}
+
+.start h4 {
+  font-size: 35px;
+}
+
+.settings {
+  display: flex;
+  margin: 1em 3em;
+}
+
+.settings .daySetting {
+  margin: 0;
+  flex: 1 0 75%;
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 40px;
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+
+  display: flex;
+  overflow: hidden;
+}
+
+.settings .daySetting > div {
+  flex-grow: 1;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: 2px solid #fff;
+  transition: all 0.3s ease-in-out 0s;
+  user-select: none;
+}
+
+.settings .daySetting > div:first-child {
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-right: none;
+}
+
+.settings .daySetting > div:last-child {
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-left: none;
+}
+
+.settings .daySetting > div:not(:last-child):not(:first-child) {
+  border-left: none;
+  border-right: none;
+}
+
+.settings .daySetting > div:hover,
+.settings .daySetting .selected {
+  background-color: #fff;
+}
+
+.settings .daySetting > .reset:hover {
+  color: #db4437;
+}
+
+.settings .daySetting > div:hover,
+.settings .daySetting .selected {
+  color: #39cb8c;
+}
+
+.auto-scroll {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 25%;
+}
+
+.auto-scroll > div {
+  cursor: pointer;
+  z-index: 2;
+}
+
+.settings i {
+  margin-right: 10px;
+}
+
+.external {
+  text-decoration: none;
+  color: #0f9d58 !important;
+  font-size: 1em;
+  margin: auto 0 auto 10px;
+}
+
+.external:hover {
+  color: #75ffbc !important;
+}
+
+.alert-container {
+  display: flex;
+}
+
+.alert-container .checkbox {
+  margin: 0 1em;
+  background-color: rgb(255, 255, 255,0.4);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.alert-container .checkbox:hover {
+  background-color: #fff;
+  color: #0CAF82;
+}
+
+.react-confirm-alert-overlay {
+  -ms-align-items: inherit;
+  align-items: inherit;
+}
+
+.react-confirm-alert {
+  margin-top: 5em;
+}
+
+.load-data,
+.next-page {
+  margin: 0 auto;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: 2px solid #fff;
+  transition: all 0.3s ease-in-out 0s;
+  user-select: none;
+  border-radius: 15px;
+  line-height: 40px;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+}
+
+.next-page {
+  border: none;
+  z-index: 5;
+  border-radius: 40px;
+  width: 125px;
+}
+
+.load-data i{
+  margin-right: 10px;
+}
+
+.next-page i{
+  margin-left: 10px;
+}
+
+.load-data:hover,
+.next-page:hover {
+  background-color: #fff;
+  color: #0CAF82;
+}

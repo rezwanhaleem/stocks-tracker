@@ -1,0 +1,103 @@
+.End {
+  background-color: #fff;
+  margin-top: 3em;
+  border-radius: 15px;
+  padding: 0;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.End .discord {
+  color: #7289da;
+}
+
+.End .assigned {
+  color: #39cb8c;
+}
+
+.End h4 {
+  font-size: 35px !important;
+}
+
+.End h5 {
+  font-size: 20px !important;
+  color: #fff;
+}
+
+.End i {
+  margin-right: 10px;
+}
+
+.End td {
+  text-align: left;
+}
+
+.table-container {
+  padding: 0 1em 1em 1em;
+}
+
+.upload {
+  background-color: #5161ce;
+  padding-bottom: 2em;
+}
+
+.upload .price {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.upload h4 i {
+  margin-right: 10px;
+}
+
+.End .svg-container {
+  transform: scaleY(-1);
+}
+
+.upload .settings {
+  flex-direction: column;
+}
+
+.upload .daySetting {
+  width: 100% !important;
+  flex: none !important;
+}
+
+.finish {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.finish .next-page {
+  margin: 0;
+}
+
+.finish .next-page:not(:last-child) {
+  margin-right: 1em;
+}
+
+.finish i {
+  margin-left: 0px !important;
+}
+
+.next-page.start-over:hover {
+  color: #DB4437;
+}
+
+.icon-container {
+  line-height: 1em;
+  overflow: hidden;
+}
+
+.icon-container.upwards i {
+  transform: translateY(100%);
+  animation: upload 2s linear infinite;
+}
+
+@keyframes upload {
+	from   {transform: translateY(100%)}
+	to  {transform: translateY(-100%)}
+}
