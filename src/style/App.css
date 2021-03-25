@@ -82,7 +82,7 @@
 .start {
   margin-top: 3em;
   max-width: 80%;
-  background-image: url(/hero.png);
+  background-image: url(../hero.png);
   background-size: cover;
   padding: 10% 0 0 0;
   cursor: default;

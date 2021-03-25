@@ -12,14 +12,15 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
+    "googleapis": "^68.0.0",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-confirm-alert": "^2.6.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.2",
+    "react-scripts": "^4.0.3",
     "socket.io": "^4.0.0",
     "socket.io-client": "^4.0.0",
-    "yarn": "^1.22.4"
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "start": "node server.js",

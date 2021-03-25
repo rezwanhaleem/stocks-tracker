@@ -20,6 +20,7 @@ class App extends React.Component {
     autoScroll: false,
     page: 0,
     spreadSheetId: '',
+    twelveId: '',
     daySetting: 1,
     day: ['Monday', 'Wednesday', 'Friday'],
     isReset: false,
@@ -344,22 +345,41 @@ class App extends React.Component {
 
   init = async () => {
     let res;
-    let twelveId = this.getCookie('twelveId');
+    let userName  = this.getCookie('userName');
 
-    if (twelveId === "") {
+    if (userName  === "") {
       try {
         res = await axios.get('/api/init', {
           headers: {
             'Cache-Control': 'no-cache'
           }
         });
-        console.log(res);
+        this.setState({ googleUrl: res.data, twelveId: this.getCookie('twelveId') });
       }
       catch (err) {
         console.log('Connection Failed! :(. ' + err);
       }
     }
     else {
+      this.setState({ userName: userName, twelveId: this.getCookie('twelveId') });
+    }
+  }
+
+  auth = async (code) => {
+    let res;
+
+    try {
+      res = await axios.post('/api/auth', {
+        code: code
+      });
+      document.cookie = "loginAttempt=" + res.data.toString();
+    }
+    catch (err) {
+      console.log('Connection Failed! :(. ' + err);
+    }
+    finally {
+      window.removeEventListener("beforeunload", this.savePlayerState);
+      window.location.replace(window.location.pathname);
     }
   }
 
@@ -368,6 +388,33 @@ class App extends React.Component {
     var cookiestring = RegExp(cookiename + "=[^;]+").exec(document.cookie);
     // Return everything after the equal sign, or an empty string if the cookie name not found
     return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./, "") : "");
+  }
+
+  checkAttempt = () => {
+    let loginAttempt = this.getCookie('loginAttempt');
+
+    if (loginAttempt === "Not Authorized") {
+      document.cookie = "loginAttempt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      confirmAlert({
+        customUI: ({ onClose }) => {
+          return (
+            <div className='custom-ui'>
+              <h1 style={{ color: '#DB4437' }}>Hey There</h1>
+              <p style={{ color: '#DB4437' }}> All your settings will be saved for this Google Account!</p>
+              <div className='alert-container'>
+                <button className="checkbox" onClick={onClose}>
+                  Ok
+                </button>
+                <button className="checkbox" onClick={onClose}>Great</button>
+              </div>
+            </div>
+          );
+        }
+      });
+    }
+    else if (loginAttempt === "Authorized") {
+      document.cookie = "loginAttempt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
   }
 
   savePlayerState = () => {
@@ -384,7 +431,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    let params = new URLSearchParams(window.location.search);
+    if (params.has("code")) {
+      this.auth(params.get("code"));
+    }
+
     this.init();
+
+    this.checkAttempt();
 
     window.addEventListener("beforeunload", this.savePlayerState);
     // let appState = JSON.parse(sessionStorage.getItem('appState'));    
