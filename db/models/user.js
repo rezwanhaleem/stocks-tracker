@@ -3,15 +3,12 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    tickers: {
+      type: DataTypes.STRING,
+      defaultValue: '',
     }
   });
-
-  User.associate = (models) => {
-    User.hasMany(models.Ticker, {
-      foreignKey: 'userId',
-      as: 'tickers',
-    });
-  };
 
   return User;
 };

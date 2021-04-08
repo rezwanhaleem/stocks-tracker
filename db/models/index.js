@@ -6,22 +6,9 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(`${__dirname}/../config/config.json`)[env];
 const db = {};
 
-let sequelize;
-let options = {
-  host: process.env[config.host],
-  port: 5432,
-  dialect: config.dialect
-};
-
-if (config.use_env) {
-  sequelize = new Sequelize(
-    process.env[config.database], process.env[config.username], process.env[config.password], options
-  );
-} else {
-  sequelize = new Sequelize(
-    config.database, config.username, config.password, config
-  );
-}
+let sequelize = new Sequelize(
+  config.database, config.username, config.password, config
+);
 
 fs
   .readdirSync(__dirname)
